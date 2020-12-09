@@ -11,4 +11,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  const car = req.body;
+  if (car.name < 0) {
+    res.status(500).json({ message: "Error, must include a name" });
+  } else {
+    try {
+      const newCar = await carsHelper.addCar(car);
+      res.status(201).json(newCar);
+    } catch (error) {
+      res.status(500).json({ message: error.messge });
+    }
+  }
+});
+
 module.exports = router;
