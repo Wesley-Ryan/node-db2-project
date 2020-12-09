@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.createTable("cars-dealership", (table) => {
+  return knex.schema.createTable("cars", (table) => {
     //key id
     table.increments();
     //vin
@@ -13,10 +13,10 @@ exports.up = function (knex) {
     //transmisson not required
     table.text("transmission", 15);
     //titleStatus not required
-    table.text("title-status", 10);
+    table.text("titleStatus", 10);
   });
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTableIfExists("cars-dealership");
+  return knex.schema.dropTableIfExists("cars");
 };
